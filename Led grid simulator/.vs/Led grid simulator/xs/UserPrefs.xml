@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{8B16C51E-B0CF-5D35-3C73-8C9C64D7DE22}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Simulator.cs">
     <Files>
-      <File FileName="Assets/Simulator.cs" Line="37" Column="9" />
+      <File FileName="Assets/Simulator.cs" Line="69" Column="26" />
+      <File FileName="Assets/Colours.txt" />
+      <File FileName="Assets/MousePos.txt" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

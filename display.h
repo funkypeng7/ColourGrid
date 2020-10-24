@@ -1,6 +1,6 @@
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
 
-int outputLEDs(std::string);
+int outputLEDs(unsigned long [][8]);
 
 #endif
