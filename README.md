@@ -1,9 +1,9 @@
-##To Run##
+##To Run
 Open main.cpp in vscode and press `f5`  
 If that doesn't work follow https://code.visualstudio.com/docs/cpp/config-clang-mac  
 Just don't change task.json or launch.json  
 
-##Header overview##
+##Header overview
 Honestly i'm still figuing out how to use them heres what I figured out  
 - at the top of each header put  
   `#ifndef FILENAME_H_`  
