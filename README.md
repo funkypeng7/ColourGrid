@@ -1,10 +1,30 @@
+## To Download
+1. Open Terminal
+2. Create and navigate to a directory called "Programming" using `mkdir Programming` 
+   - use `ls` to see all directorys(folders) in current directory
+   - use `cd directoryName` to navigate to a directory
+   - I would recommend creating this directory in your home folder, which is where terminal first opens up
+3. When inside (your terminal should say something like `MacBook-Pro:ColourGrid username$`) use `git clone https://github.com/funkypeng7/ColourGrid.git` to make a local copy
+
+## To Push
+1. Stage changes with `git add .`
+   - make sure you are inside your ColourGrid directory
+2. Commit changes with `git commit` 
+   - Set vscode as your default editor with `git config --global core.editor "code --wait"`
+   - On the first line type the title, keep it short, max 50 char
+   - Have one blank line
+   - After that add as much information as you need, keep it shorter than 72 characters per line, there is a line to indicate max length
+   - Close file to finish commit
+3. Push changes with `git push`
+
+
 ## To Run
 Open main.cpp in vscode and press `f5`  
 If that doesn't work follow https://code.visualstudio.com/docs/cpp/config-clang-mac  
-Just don't change task.json or launch.json  
+- **Don't change the task.json or launch.json**
 
 ## Header overview
-Honestly i'm still figuing out how to use them heres what I figured out  
+Honestly i'm still figuing out how to use them here's what i've figured out so far
 - at the top of each header put  
   `#ifndef FILENAME_H_`  
   `#define FILENAME_H_`  
