@@ -7,6 +7,9 @@
 
 extern std::string outputFile;
 extern std::string inputFile;
+
+extern char gridInfo[10][8];
+
 extern unsigned long colours[10][8];
 extern std::vector<int> prevCoords;
 

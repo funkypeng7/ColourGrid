@@ -4,7 +4,7 @@
    - use `ls` to see all directorys(folders) in current directory
    - use `cd directoryName` to navigate to a directory
    - I would recommend creating this directory in your home folder, which is where terminal first opens up
-3. When inside (your terminal should say something like `MacBook-Pro:ColourGrid username$`) use `git clone https://github.com/funkypeng7/ColourGrid.git` to make a local copy
+3. When inside (your terminal should say something like `MacBook-Pro:Programming username$`) use `git clone https://github.com/funkypeng7/ColourGrid.git` to make a local copy
 
 ## To Push
 1. Stage changes with `git add .`

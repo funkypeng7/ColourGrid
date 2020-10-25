@@ -11,15 +11,18 @@
 #include <vector>
 #include <fstream>
 
+// Global variables
+// Containing what is in each cell
+char gridInfo[10][8];
+// Jagged array of colours in hexidecimal form
+unsigned long colours[10][8];
+// Mouse/Touch last coordinates when [0] == 1 means pressed
+std::vector<int> prevCoords = {0,0,0};
+// Paths for output and input files
 std::string outputFile = "Programming/Colours.txt";
 std::string inputFile = "Programming/MousePos.txt";
 
-// Jagged array of colours in hexidecimal form
-unsigned long colours[10][8];
-
-// Mouse/Touch last coordinates when [0] == 1 means pressed
-std::vector<int> prevCoords = {0,0,0};
-
+// Local Variables
 //Programs: 1-Snake, 2-Checkers, 3-Rush Hour, 4-Invaders
 unsigned long programs[4] = {createRGB(150, 242, 19), createRGB(255, 0, 0), createRGB(0, 0, 255), createRGB(0, 255, 255)};
 int numOfPrograms = 4;
