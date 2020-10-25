@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System;
 
 public class Simulator : MonoBehaviour
 {
+    [SerializeField] bool isRunningInDebug;
+    string currentDir = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
+    const string coloursFile = "/Programming/Colours.txt";
+    const string mousePosFile = "/Programming/MousePos.txt";
 
     RawImage[][] blocks = new RawImage[10][];
     Color32[][] colours = new Color32[10][];
@@ -15,10 +20,14 @@ public class Simulator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!File.Exists(Application.dataPath + "/MousePos.txt"))
+        if (isRunningInDebug)
+            currentDir += "/Programming/ColourGrid";
+        if(!File.Exists(currentDir + "/Programming/MousePos.txt"))
         {
-            File.Create(Application.dataPath + "/MousePos.txt");
+            FileStream file = File.Create(currentDir + "/Programming/MousePos.txt");
+            file.Close();
         }
+
 
         for (int i = 0; i < 10; i++)
         {
@@ -52,7 +61,7 @@ public class Simulator : MonoBehaviour
             str = MousePos.x.ToString() + "," + MousePos.y.ToString();
         }
         //Debug.Log(str);
-        File.WriteAllText(Application.dataPath + "/MousePos.txt", str);
+        File.WriteAllText(currentDir + "/Programming/MousePos.txt", str);
 
     }
     
@@ -64,7 +73,7 @@ public class Simulator : MonoBehaviour
         while (true)
         {
             int offset;
-            string text = System.IO.File.ReadAllText(@Application.dataPath + "/Colours.txt");
+            string text = System.IO.File.ReadAllText(currentDir + "/Programming/Colours.txt");
             if (text == "")
                 continue;
             for (int y = 0; y < 8; y++)

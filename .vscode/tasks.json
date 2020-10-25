@@ -14,7 +14,6 @@
           "-Wall",
           "-Wextra",
           "-Wpedantic",
-          // "${workspaceFolder}/*.cpp",
           "${fileDirname}/*.cpp",
           "-o",
           "${fileDirname}/${fileBasenameNoExtension}"
