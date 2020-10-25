@@ -380,4 +380,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40eae2b7c9ac471bb8780447fa4827d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRunningInDebug: 0
   cell: {fileID: 4316260559572786458, guid: d71a1f8e482ee425e81402d41b7c8a83, type: 3}

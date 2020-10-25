@@ -19,9 +19,10 @@
 
 
 ## To Run
-Open main.cpp in vscode and press `f5`  
-If that doesn't work follow https://code.visualstudio.com/docs/cpp/config-clang-mac  
-- **Don't change the task.json or launch.json**
+Open main.cpp in vscode and press `f5` this will run it in debug mode click the arrow at the top of vscode to start. You will need to run the simulator in debug mode.  
+To run release version press `cmd shift B` while in main.cpp to build the executable, then in terminal locate the file and run `open main` as main is the name of the file.  
+<!-- If that doesn't work follow https://code.visualstudio.com/docs/cpp/config-clang-mac  
+- **Don't change the task.json or launch.json** -->
 
 ## Header overview
 Honestly i'm still figuing out how to use them here's what i've figured out so far
