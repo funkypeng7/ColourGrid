@@ -9,14 +9,16 @@
 #include <chrono>
 #include <thread>
 #include <vector>
+#include <fstream>
 
-using namespace std;
+std::string outputFile = "Programming/Colours.txt";
+std::string inputFile = "Programming/MousePos.txt";
 
 // Jagged array of colours in hexidecimal form
 unsigned long colours[10][8];
 
 // Mouse/Touch last coordinates when [0] == 1 means pressed
-vector<int> prevCoords = {0,0,0};
+std::vector<int> prevCoords = {0,0,0};
 
 //Programs: 1-Snake, 2-Checkers, 3-Rush Hour, 4-Invaders
 unsigned long programs[4] = {createRGB(150, 242, 19), createRGB(255, 0, 0), createRGB(0, 0, 255), createRGB(0, 255, 255)};
@@ -47,7 +49,7 @@ void Setup()
 void Loop()
 {
     // Get touch position
-    vector<int> vec = getCoordsOfMouse();
+    std::vector<int> vec = getCoordsOfMouse();
 
     // Run function for current game
     switch(currentProgram)
@@ -66,7 +68,6 @@ void Loop()
                     Loop();
                     return;
                 }
-                
             }
             
             // Display game icons/colours 
@@ -80,7 +81,11 @@ void Loop()
 
     // Snake
     case 0:
-        if(programLoaded)
+        if(!programLoaded)
+        {
+            setAllColours(createRGB(50,255,50));
+            programLoaded = true;
+        }
         break;
 
     default:
@@ -99,10 +104,12 @@ void Loop()
 // Loop() Continously
 int main()
 {   
+    std::cout << "Running Main\n";
     Setup();
     while(true)
     {
         Loop();
+        std::cout << "prevCoords {" << prevCoords[0] << ", " << prevCoords[1] << ", " << prevCoords[2] << "}\n";
     }
     return 0;
 }

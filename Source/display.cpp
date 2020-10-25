@@ -1,17 +1,18 @@
 // Currently outputs to a .txt file read by unity
 // Will output to LEDs in final version
 
-// basic file operations
-#include <iostream>
-#include <fstream>
 #include "display.h"
 #include "functions.h"
+#include "global.h"
 
-using namespace std;
+#include <iostream>
+#include <fstream>
+#include <string>
 
 int outputLEDs(unsigned long colours[][8]) {
-  ofstream myfile;
-  myfile.open ("./Led grid simulator/Assets/Colours.txt");
+  std::cout << "Trying to output LEDs\n";
+  std::ofstream myfile;
+  myfile.open(outputFile);
   for(int y = 0; y < 8; y++)
   {
     for(int x = 0; x < 10; x++)

@@ -5,6 +5,8 @@
 // Define global varibles with extern in here
 // Declare with values in main.cpp
 
+extern std::string outputFile;
+extern std::string inputFile;
 extern unsigned long colours[10][8];
 extern std::vector<int> prevCoords;
 

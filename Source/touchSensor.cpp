@@ -3,6 +3,7 @@
 
 #include "global.h"
 #include "touchSensor.h"
+
 #include <sstream>
 #include <vector>
 #include <string>
@@ -10,20 +11,18 @@
 #include <fstream>
 #include <math.h>
 
-using namespace std;
-
 std::vector<int> getCoordsOfMouse()
 {
-    string contents; 
-    ifstream myfile;
-    myfile.open ("./Led grid simulator/Assets/MousePos.txt");
+    std::string contents; 
+    std::ifstream myfile;
+    myfile.open (inputFile);
     getline(myfile, contents);
     myfile.close();
     
     if(contents == "")
-        return {0,0,0};
+        return prevCoords;
 
-    vector<double> vecD;
+    std::vector<double> vecD;
     // cout << "In function: " << contents.substr(0, contents.find(',')) << "\n";
     // cout << contents.substr(contents.find(',')) << "\n";
 
@@ -34,7 +33,7 @@ std::vector<int> getCoordsOfMouse()
     {
         return prevCoords;
     }
-    cout << vecD[0] << ", " << vecD[1] << "\n";
+    std::cout << vecD[0] << ", " << vecD[1] << "\n";
     if(vecD[0] > 5000 || vecD[1] > 5000)
         return {0,0,0};
 
