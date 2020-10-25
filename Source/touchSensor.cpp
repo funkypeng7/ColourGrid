@@ -1,7 +1,7 @@
 // Currently takes mouse position from unity
 // Will take touch position from capacitive touch sensor
 
-
+#include "global.h"
 #include "touchSensor.h"
 #include <sstream>
 #include <vector>
@@ -27,7 +27,13 @@ std::vector<int> getCoordsOfMouse()
     // cout << "In function: " << contents.substr(0, contents.find(',')) << "\n";
     // cout << contents.substr(contents.find(',')) << "\n";
 
-    vecD = {stod(contents.substr(0, contents.find(','))), stod(contents.substr(contents.find(',') + 1))};
+    try {
+        vecD = {stod(contents.substr(0, contents.find(','))), stod(contents.substr(contents.find(',') + 1))};
+    }
+    catch(...)
+    {
+        return prevCoords;
+    }
     cout << vecD[0] << ", " << vecD[1] << "\n";
     if(vecD[0] > 5000 || vecD[1] > 5000)
         return {0,0,0};
