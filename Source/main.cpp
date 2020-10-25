@@ -3,6 +3,8 @@
 #include "display.h"
 #include "functions.h"
 #include "touchSensor.h"
+#include "snake.h"
+
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
@@ -63,7 +65,7 @@ void Loop()
             if(vec[0] == 1)
             {
                 // Calculate index of the selected game based off coords
-                int gameIndex = vec[1] + (7 - vec[2]) * 10 ;
+                int gameIndex = vec[1] + (7 - vec[2]) * 10;
                 // If valid game start game
                 if(gameIndex < numOfPrograms)
                 {
@@ -86,7 +88,7 @@ void Loop()
     case 0:
         if(!programLoaded)
         {
-            setAllColours(createRGB(50,255,50));
+            SnakeInit();
             programLoaded = true;
         }
         break;
@@ -107,12 +109,10 @@ void Loop()
 // Loop() Continously
 int main()
 {   
-    std::cout << "Running Main\n";
     Setup();
     while(true)
     {
         Loop();
-        std::cout << "prevCoords {" << prevCoords[0] << ", " << prevCoords[1] << ", " << prevCoords[2] << "}\n";
     }
     return 0;
 }

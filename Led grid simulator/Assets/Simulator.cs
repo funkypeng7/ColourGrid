@@ -55,8 +55,7 @@ public class Simulator : MonoBehaviour
         Vector3 MousePos = (Input.mousePosition - new Vector3(437.5f, 122.5f));
         
         if (MousePos.x < 0 || MousePos.x > 1045 || MousePos.y < 0 || MousePos.y > 835f || !Input.GetMouseButton(0))
-            str = "10000, 10000";
-        else
+            str = "10000, 10000";        else
         {
             str = MousePos.x.ToString() + "," + MousePos.y.ToString();
         }
