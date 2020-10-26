@@ -1,11 +1,5 @@
 ﻿<Properties StartupConfiguration="{8B16C51E-B0CF-5D35-3C73-8C9C64D7DE22}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Simulator.cs">
-    <Files>
-      <File FileName="Assets/Simulator.cs" Line="28" Column="26" />
-      <File FileName="Assets/Colours.txt" />
-      <File FileName="Assets/MousePos.txt" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="afc71898-f4a5-4711-8a11-ef4d6943c64b" />

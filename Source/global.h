@@ -14,8 +14,11 @@ extern unsigned long colours[10][8];
 extern std::vector<int> prevCoords;
 extern std::vector<float> prevRawCoords;
 
+extern bool programLoaded;
+extern int currentProgram;
 
 void setAllColours(unsigned long);
+void returnToMainMenu();
 
 #endif
 

@@ -26,15 +26,17 @@ std::vector<float> prevRawCoords = {0,0,0};
 // Paths for output and input files
 std::string outputFile = "Programming/Colours.txt";
 std::string inputFile = "Programming/MousePos.txt";
+// Game info
+bool programLoaded = false;
+int currentProgram = -1;
 
 // Local Variables
 //Programs: 1-Snake, 2-Checkers, 3-Rush Hour, 4-Invaders
 unsigned long programs[4] = {createRGB(150, 242, 19), createRGB(255, 0, 0), createRGB(0, 0, 255), createRGB(0, 255, 255)};
 int numOfPrograms = 4;
 
-// Game info
-int currentProgram = -1; 
-bool programLoaded = false;
+
+
 
 // Set all cells to a colour
 void setAllColours(unsigned long colour) 
@@ -46,6 +48,12 @@ void setAllColours(unsigned long colour)
             colours[x][y] = colour;
         }
     }
+}
+
+void returnToMainMenu()
+{
+    currentProgram = -1;
+    programLoaded = false;
 }
 
 void Setup()
@@ -73,8 +81,6 @@ void Loop()
                 if(gameIndex < numOfPrograms)
                 {
                     currentProgram = gameIndex;
-                    Loop();
-                    return;
                 }
             }
             
@@ -87,31 +93,28 @@ void Loop()
             }
             break;
 
-    // Snake
-    case 0:
-        if(!programLoaded)
-        {
-            std::cout << "Snake\n";
-            SnakeInit();
-            programLoaded = true;
-        }
-        Snake();
-        break;
+        // Snake
+        case 0:
+            if(!programLoaded)
+                SnakeSelect();
+            else
+                Snake();
+            break;
 
     // Rush Hour
     case 2:
         Rushhour();
         break;
 
-    default:
-            currentProgram = -1;
-            Loop();
-            return;
+        default:
+                currentProgram = -1;
+                Loop();
+                return;
     }
 
     prevCoords = vec;
     outputLEDs(colours);
-    std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    // std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
 }
 
