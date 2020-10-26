@@ -16,16 +16,3 @@ std::string createHexString(unsigned long hexValue)
     return hexcol;
 }
 
-
-// int getTimeSince()
-// {
-    // using namespace std::this_thread; // sleep_for, sleep_until
-    // using namespace std::chrono; // nanoseconds, system_clock, seconds
-//     auto begin = chrono::high_resolution_clock::now();    
-//     int x;
-//     cin >> x;      // wait for user input
-//     auto end = chrono::high_resolution_clock::now();    
-//     auto dur = end - begin;
-//     auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(dur).count();
-//     return ms;
-// }

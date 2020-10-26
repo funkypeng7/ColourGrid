@@ -3,6 +3,8 @@
 #include "display.h"
 #include "functions.h"
 #include "touchSensor.h"
+#include "snake.h"
+
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
@@ -18,6 +20,7 @@ char gridInfo[10][8];
 unsigned long colours[10][8];
 // Mouse/Touch last coordinates when [0] == 1 means pressed
 std::vector<int> prevCoords = {0,0,0};
+std::vector<float> prevRawCoords = {0,0,0};
 // Paths for output and input files
 std::string outputFile = "Programming/Colours.txt";
 std::string inputFile = "Programming/MousePos.txt";
@@ -63,7 +66,7 @@ void Loop()
             if(vec[0] == 1)
             {
                 // Calculate index of the selected game based off coords
-                int gameIndex = vec[1] + (7 - vec[2]) * 10 ;
+                int gameIndex = vec[1] + (7 - vec[2]) * 10;
                 // If valid game start game
                 if(gameIndex < numOfPrograms)
                 {
@@ -86,7 +89,18 @@ void Loop()
     case 0:
         if(!programLoaded)
         {
-            setAllColours(createRGB(50,255,50));
+            std::cout << "Snake\n";
+            SnakeInit();
+            programLoaded = true;
+        }
+        Snake();
+        break;
+
+    // Rush Hour
+    case 2:
+        if(!programLoaded)
+        {
+            setAllColours(createRGB(255, 255, 255));
             programLoaded = true;
         }
         break;
@@ -96,10 +110,13 @@ void Loop()
             Loop();
             return;
     }
+
     prevCoords = vec;
     outputLEDs(colours);
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
+
 }
+
 
 // Main Loop
 // Structure 
@@ -107,12 +124,10 @@ void Loop()
 // Loop() Continously
 int main()
 {   
-    std::cout << "Running Main\n";
     Setup();
     while(true)
     {
         Loop();
-        std::cout << "prevCoords {" << prevCoords[0] << ", " << prevCoords[1] << ", " << prevCoords[2] << "}\n";
     }
     return 0;
 }

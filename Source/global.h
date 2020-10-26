@@ -12,6 +12,10 @@ extern char gridInfo[10][8];
 
 extern unsigned long colours[10][8];
 extern std::vector<int> prevCoords;
+extern std::vector<float> prevRawCoords;
+
+
+void setAllColours(unsigned long);
 
 #endif
 

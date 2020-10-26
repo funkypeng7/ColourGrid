@@ -4,5 +4,6 @@
 #include <string>
 
 std::vector<int> getCoordsOfMouse();
+std::vector<float> getRawCoordsOfMouse();
 
 #endif
