@@ -19,7 +19,7 @@ void RushhourInit(char gridInfo[10][8])
 
 void AddCars()
 {
-    ifstream b_file ( "example.txt" );
+    std::ifstream b_file ( "example.txt" );
 
 
 
