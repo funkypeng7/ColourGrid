@@ -3,7 +3,9 @@
 #include "display.h"
 #include "functions.h"
 #include "touchSensor.h"
+// Games
 #include "snake.h"
+#include "rushhour.h"
 
 #include <iostream>
 #include <stdio.h>
@@ -98,11 +100,7 @@ void Loop()
 
     // Rush Hour
     case 2:
-        if(!programLoaded)
-        {
-            setAllColours(createRGB(255, 255, 255));
-            programLoaded = true;
-        }
+        Rushhour();
         break;
 
     default:
