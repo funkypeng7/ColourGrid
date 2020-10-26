@@ -20,6 +20,7 @@ char gridInfo[10][8];
 unsigned long colours[10][8];
 // Mouse/Touch last coordinates when [0] == 1 means pressed
 std::vector<int> prevCoords = {0,0,0};
+std::vector<float> prevRawCoords = {0,0,0};
 // Paths for output and input files
 std::string outputFile = "Programming/Colours.txt";
 std::string inputFile = "Programming/MousePos.txt";
@@ -88,9 +89,11 @@ void Loop()
     case 0:
         if(!programLoaded)
         {
+            std::cout << "Snake\n";
             SnakeInit();
             programLoaded = true;
         }
+        Snake();
         break;
 
     default:

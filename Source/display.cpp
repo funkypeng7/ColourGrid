@@ -10,7 +10,6 @@
 #include <string>
 
 int outputLEDs(unsigned long colours[][8]) {
-  std::cout << "Trying to output LEDs\n";
   std::ofstream myfile;
   myfile.open(outputFile);
   for(int y = 0; y < 8; y++)
