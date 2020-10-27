@@ -24,40 +24,40 @@
 // Yellow = 9
 // Black = 10
 // Aqua = 11
-// Turquoise = 12 (0, 153, 153)
+// Turquoise = 12
 
-std::vector<std::vector<int>> EASY1 {{1, 1, 2, 4, 2, 4, 3}, {2, 1, 2, 1, 2, 1, 3}, {3, 1, 3, 3, 2, 3, 4}, {4, 0, 2, 6, 2, 5, 2}, {5, 0, 2, 5, 5, 4, 5}, {6, 0, 2, 2, 4, 1, 4}, {7, 0, 3, 5, 7, 3, 7}, {8, 1, 2, 2, 6, 2, 7}, {9, 1, 3, 6, 5, 6, 7}, {10, 1, 2, 1, 5, 1, 6}, {11, 0, 2, 4, 6, 3, 6}};
-std::vector<std::vector<int>> EASY2 {{1, 1, 2, 4, 3, 4, 4}, {4, 1, 2, 3, 3, 3, 4}, {5, 0, 2, 2, 3, 1, 3}, {7, 0, 3, 3, 7, 1, 7}, {9, 0, 3, 4, 5, 2, 5}, {11, 1, 2, 1, 4, 1, }};
-std::vector<std::vector<int>> EASY3 {{1, 1, 2, 4, 3, 4, 4}, {3, 1, 3, 3, 5, 3, 6}, {4, 0, 2, 3, 4, 2, 4}, {5, 0, 2, 2, 7, 1, 7}, {7, 0, 3, 6, 5, 4, 5}, {8, 1, 2, 2, 6, 2, 7}, {9, 1, 3, 6, 5, 6, 7}, {10, 1, 2, 1, 5, 1, 6}, {11, 0, 2, 4, 6, 3, 6}};
+std::vector<std::vector<int>> EASY1 {{1, 1, 2, 2, 4, 3, 4}, {2, 1, 2, 2, 1, 3, 1}, {3, 1, 3, 2, 3, 4, 3}, {4, 0, 2, 2, 5, 2, 6}, {5, 0, 2, 5, 4, 5, 5}, {6, 0, 2, 4, 1, 4, 2}, {7, 0, 3, 7, 3, 7, 5}, {8, 1, 2, 6, 2, 7, 2}, {9, 1, 3, 5, 6, 7, 6}, {10, 1, 2, 5, 1, 6, 1}, {11, 0, 2, 6, 3, 6, 4}};
+std::vector<std::vector<int>> EASY2 {{1, 1, 2, 3, 4, 4, 4}, {4, 1, 2, 3, 3, 4, 3}, {5, 0, 2, 3, 2, 3, 1}, {7, 0, 3, 7, 3, 7, 1}, {9, 0, 3, 5, 4, 5, 2}, {11, 1, 2, 4, 1, 5, 1}};
+std::vector<std::vector<int>> EASY3 {{1, 1, 2, 3, 4, 4, 4}, {3, 1, 3, 5, 3, 6, 3}, {4, 0, 2, 4, 3, 4, 2}, {5, 0, 2, 7, 2, 7, 1}, {7, 0, 3, 5, 6, 5, 4}, {8, 1, 2, 6, 2, 7, 2}, {9, 1, 3, 5, 6, 7, 6}, {10, 1, 2, 5, 1, 6, 1}, {11, 0, 2, 6, 4, 6, 3}};
 
 void RushhourInit()
 {
-    int i, j;
+    int x, y;
 
-    for(i = 1; i < 8; i++) {
-        gridInfo[0][i] = 'SIDE';
+    for(x = 1; x < 8; x++) {
+        gridInfo[x][0] = 'S';
     }
  
-    for(i = 1; i < 8; i++) {
-        gridInfo[9][i] = 'SIDE';
+    for(x = 1; x < 8; x++) {
+        gridInfo[9][x] = 'S';
     }
 
-    gridInfo[0][0] = 'CLICKLEFT';
-    gridInfo[9][0] = 'CLICKRIGHT';
+    gridInfo[0][0] = 'L';
+    gridInfo[9][0] = 'R';
 
-    for(i = 1; i < 9; i++) {
-        for(j= 0; j < 7; j++) {
-            gridInfo[i][j] = 'WALL';
+    for(x = 1; x < 9; x++) {
+        for(y = 0; y < 8; y++) {
+            gridInfo[x][y] = 'W';
         }
     }
 
-    for(i = 2; i < 8; i++) {
-        for(j = 1; j < 6; j++) {
-            gridInfo[i][j] = 'SPACE';
+    for(x = 2; x < 8; x++) {
+        for(y = 1; y < 7; y++) {
+            gridInfo[x][y] = 'B';
         }
     }
 
-    gridInfo[8][4] = 'EXIT';
+    gridInfo[8][4] = 'E';
 }
 
 void AddCars(std::vector<std::vector<int>> CHOSENBOARD)
@@ -66,22 +66,22 @@ void AddCars(std::vector<std::vector<int>> CHOSENBOARD)
 
     for(i = 0; i < size(CHOSENBOARD); i++) {
 
-        int j;
+        int x, y;
         int colour = CHOSENBOARD[i][0];
         int orientation = CHOSENBOARD[i][1];
         int size = CHOSENBOARD[i][2];
         int row = CHOSENBOARD[i][3];
         int col = CHOSENBOARD[i][4];
 
-        if (orientation == 1) {
-		    for (j = col; j <= (col + size - 1 ); j++) {
+        if (orientation == 0) {
+		    for ( y = col; y <= (col + size - 1); y++) {
 
-			    gridInfo[row][j] = colour;
+			    gridInfo[row][y] = colour;
 		    }
         } else {
-            for (j = row; j <= (row + - 1 * size - 1); j++) {
+            for (x = row; x <= (row + size - 1); x++) {
 
-			    gridInfo[j][col] = colour;
+			    gridInfo[x][col] = colour;
 		    }
         }
 	}
@@ -90,66 +90,66 @@ void AddCars(std::vector<std::vector<int>> CHOSENBOARD)
 
 void PrintBoard()
 {
-    int i, j;
+    int x, y;
 
-    for(i = 0; i < 10; i++) {
-        for(j = 0; j < 7; j++) {
+    for(x = 0; x < 10; x++) {
+        for(y = 0; y < 8; y++) {
 
-            switch(gridInfo[i][j])
+            switch(gridInfo[x][y])
             {
-                case 'SIDE':
-                    colours[i][j] = createRGB(102, 178, 255);
+                case 'S':
+                    colours[x][y] = createRGB(102, 178, 255);
                     break;
-                case 'CLICKLEFT':
-                    colours[i][j] = createRGB(255, 102, 102);
+                case 'L':
+                    colours[x][y] = createRGB(255, 102, 102);
                     break;
-                case 'CLICKRIGHT':
-                    colours[i][j] = createRGB(102, 255, 102);
+                case 'R':
+                    colours[x][y] = createRGB(102, 255, 102);
                     break;
-                case 'WALL':
-                    colours[i][j] = createRGB(64, 64, 64);
+                case 'W':
+                    colours[x][y] = createRGB(64, 64, 64);
                     break;
-                case 'SPACE':
-                    colours[i][j] = createRGB(160, 160, 160);
+                case 'B':
+                    colours[x][y] = createRGB(160, 160, 160);
                     break;
-                case 'EXIT':
-                    colours[i][j] = createRGB(160, 160, 160);
+                case 'E':
+                    colours[x][y] = createRGB(160, 160, 160);
                     break;  
                 case 1:
-                    colours[i][j] = createRGB(255, 0, 0);
+                    colours[x][y] = createRGB(255, 0, 0);
                     break;
                 case 2:
-                    colours[i][j] = createRGB(0, 204, 0);
+                    colours[x][y] = createRGB(0, 204, 0);
                     break;
                 case 3:
-                    colours[i][j] = createRGB(0, 0, 255);
+                    colours[x][y] = createRGB(0, 0, 255);
                     break;
                 case 4:
-                    colours[i][j] = createRGB(0, 255, 128);
+                    colours[x][y] = createRGB(0, 255, 128);
                     break;
                 case 5:
-                    colours[i][j] = createRGB(255, 153, 51);
+                    colours[x][y] = createRGB(255, 153, 51);
                     break;
                 case 6:
-                    colours[i][j] = createRGB(255, 153, 204);
+                    colours[x][y] = createRGB(255, 153, 204);
                     break;
                 case 7:
-                    colours[i][j] = createRGB(204, 153, 255);
+                    colours[x][y] = createRGB(204, 153, 255);
                     break;
                 case 8:
-                    colours[i][j] = createRGB(127, 0, 255);
+                    colours[x][y] = createRGB(127, 0, 255);
                     break;
                 case 9:
-                    colours[i][j] = createRGB(255, 255, 51);
+                    colours[x][y] = createRGB(255, 255, 51);
                     break;
                 case 10:
-                    colours[i][j] = createRGB(0, 0, 0);
+                    colours[x][y] = createRGB(0, 0, 0);
                     break;
                 case 11:
-                    colours[i][j] = createRGB(153, 255, 255);
+                    colours[x][y] = createRGB(153, 255, 255);
                     break;
                 case 12:
-                    colours[i][j] = createRGB(0, 153, 153);
+                    colours[x][y] = createRGB(0, 153, 153);
                     break;
 
             }
