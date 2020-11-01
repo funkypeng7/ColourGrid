@@ -497,7 +497,7 @@ void MoveCar()
 
     if (direction == 1 && carInfo[1] == 0)
     {
-        for (i = 0; i < distance; i++)
+        for (i = 0; i < distance; i++) 
         {
             for (j = 0; j < carInfo[2]; j++)
             {
